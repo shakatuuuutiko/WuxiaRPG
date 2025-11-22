@@ -1,27 +1,35 @@
-# --- CONFIGURACIÓN GLOBAL DEL JUEGO ---
+# --- CONFIGURACIÓN GLOBAL (PYGAME) ---
 
-# 1. Configuración de Ventana y Gráficos (Base para Pygame/Tkinter)
+# Ventana
 WINDOW_WIDTH = 1280
-WINDOW_HEIGHT = 800
-APP_TITLE = "WUXIA: ETERNIDAD INFINITA - Final Build"
-FPS = 30 # Velocidad de refresco del juego
+WINDOW_HEIGHT = 720
+APP_TITLE = "WUXIA: ETERNIDAD INFINITA (Pygame)"
+FPS = 60
+TILE_SIZE = 24 # Tamaño de los cuadros del mapa
 
-# 2. Configuración de Tiempos y Archivos
-TICK_SPEED_MS = 1000 # 1 segundo real = 1 ciclo de juego (para automatización de tareas)
+# Rutas
 SAVE_FOLDER = "saves"
 
-# 3. Constantes del Mundo
-CHUNK_SIZE = 32 # Tamaño de cada trozo de mapa (32x32)
-VOID_TILE = "ABISMO ESPACIAL" # Nombre del terreno borrado por Dao Espacial
-
-# 4. Paleta de Colores (Usada en Pygame/Tkinter)
+# Colores (RGB)
 COLORS = {
-    "background": "#050505",    # Negro oscuro
-    "panel": "#101010",         
-    "text_light": "#dddddd",    
-    "highlight_gold": "#d4aa00",# Dorado
-    "danger_red": "#ff5555",    # Rojo (HP)
-    "qi_blue": "#4fa4ff",       # Azul (Qi)
-    "success_green": "#55ff55", # Verde
-    "warning_yellow": "#ffff00" # Amarillo
+    "black": (10, 10, 10),
+    "white": (220, 220, 220),
+    "panel_bg": (25, 25, 30),
+    "panel_border": (100, 100, 100),
+    "gold": (212, 170, 0),
+    "red": (200, 50, 50),
+    "green": (50, 200, 50),
+    "blue": (50, 100, 200),
+    "gray": (100, 100, 100),
+    
+    # Biomas
+    "Llanura": (34, 139, 34),
+    "Bosque": (0, 80, 0),
+    "Montaña": (105, 105, 105),
+    "Volcán": (139, 0, 0),
+    "Océano": (0, 0, 139),
+    "Agua": (30, 144, 255),
+    "Playa": (238, 214, 175),
+    "Tundra": (200, 240, 255),
+    "ABISMO": (0, 0, 0)
 }
