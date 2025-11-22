@@ -2,142 +2,112 @@ import pygame
 from config import COLORS, WINDOW_WIDTH, WINDOW_HEIGHT, TILE_SIZE, CHUNK_SIZE
 
 class PygameRenderer:
-    def __init__(self, screen):
+    def __init__(self, screen, map_mgr):
         self.screen = screen
-        self.font_main = pygame.font.SysFont("Arial", 20)
-        self.font_title = pygame.font.SysFont("Arial", 40, bold=True)
-        self.font_icon = pygame.font.SysFont("Segoe UI Symbol", int(TILE_SIZE * 0.8))
+        self.map_mgr = map_mgr
+        self.tile_size = 24
+        self.font = pygame.font.SysFont("Arial", 16)
+        self.font_title = pygame.font.SysFont("Arial", 20, bold=True)
+        
+        # Cargar fuente de iconos si es posible, sino usar default
+        try:
+            self.font_icon = pygame.font.SysFont("Segoe UI Symbol", 20)
+        except:
+            self.font_icon = self.font
 
-    def draw_game(self, engine):
-        self.screen.fill(COLORS["background"])
+    def draw_game_view(self, player_location, player):
+        # ... (Lógica de mapa igual que antes) ...
+        # COPIAR LA LOGICA DE DRAW_GAME_VIEW DEL MENSAJE ANTERIOR AQUÍ
+        # O usar esta versión simplificada:
         
-        # 1. DIBUJAR MAPA
-        self._draw_map(engine)
+        gx, gy = player_location
+        start_x = 300
+        start_y = 50
         
-        # 2. DIBUJAR HUD (Barras de vida, info)
-        self._draw_hud(engine.player)
+        # Dibujar un área de 30x25 tiles alrededor
+        view_w, view_h = 30, 25
         
-        # 3. DIBUJAR ESTADOS (Combate, Inventario)
-        if engine.state == "COMBAT":
-            self._draw_combat_overlay(engine)
-        elif engine.state == "INVENTORY":
-            self._draw_inventory_overlay(engine.player)
-        elif engine.state == "LOG":
-            self._draw_log_overlay(engine.logs)
-
-        pygame.display.flip()
-
-    def _draw_map(self, engine):
-        player_x, player_y = engine.player.location
-        
-        # Calcular cuántos tiles caben en pantalla
-        tiles_w = WINDOW_WIDTH // TILE_SIZE
-        tiles_h = WINDOW_HEIGHT // TILE_SIZE
-        
-        start_x = player_x - (tiles_w // 2)
-        start_y = player_y - (tiles_h // 2)
-
-        for y in range(tiles_h):
-            for x in range(tiles_w):
-                world_x = start_x + x
-                world_y = start_y + y
+        for y in range(view_h):
+            for x in range(view_w):
+                wx = gx - (view_w // 2) + x
+                wy = gy - (view_h // 2) + y
                 
-                # Obtener terreno real del sistema
                 try:
-                    tile_type = engine.map_mgr.get_tile_info(world_x, world_y)
+                    tile = self.map_mgr.get_tile_info(wx, wy)
                 except:
-                    tile_type = "Vacío"
+                    tile = "Vacío"
+                    
+                color = self._get_color(tile)
+                pygame.draw.rect(self.screen, color, (start_x + x*self.tile_size, start_y + y*self.tile_size, self.tile_size, self.tile_size))
 
-                # Color
-                color = COLORS.get(tile_type, (255, 0, 255))
-                if tile_type == "ABISMO ESPACIAL": color = (0, 0, 0)
-                
-                rect = pygame.Rect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
-                pygame.draw.rect(self.screen, color, rect)
-                
-                # Jugador (Centro)
-                if world_x == player_x and world_y == player_y:
-                    pygame.draw.circle(self.screen, (255, 255, 255), rect.center, TILE_SIZE//2 - 2)
+        # Jugador
+        cx = start_x + (view_w // 2) * self.tile_size
+        cy = start_y + (view_h // 2) * self.tile_size
+        pygame.draw.circle(self.screen, (255, 255, 255), (cx + 10, cy + 10), 8)
 
-    def _draw_hud(self, player):
-        # Panel inferior semi-transparente
-        s = pygame.Surface((WINDOW_WIDTH, 100))
+    def draw_stats_panel(self, player):
+        rect = pygame.Rect(0, 0, 280, WINDOW_HEIGHT)
+        pygame.draw.rect(self.screen, COLORS["panel"], rect)
+        pygame.draw.line(self.screen, COLORS["gray"], (280, 0), (280, WINDOW_HEIGHT))
+        
+        self._draw_text(f"Nombre: {player.name}", (20, 20), COLORS["gold"])
+        self._draw_text(f"Reino: {player.realm_name}", (20, 50), COLORS["text_light"])
+        self._draw_text(f"HP: {player.stats['hp']}/{player.stats['max_hp']}", (20, 80), COLORS["danger_red"])
+        self._draw_text(f"Qi: {player.stats['qi']}/{player.stats['max_qi']}", (20, 110), COLORS["qi_blue"])
+        self._draw_text(f"Oro: {player.inventory.get('Oro', 0)}", (20, 140), COLORS["warning_yellow"])
+        
+        self._draw_text("CONTROLES:", (20, WINDOW_HEIGHT - 150), COLORS["gray"])
+        self._draw_text("WASD: Mover", (20, WINDOW_HEIGHT - 120), COLORS["gray"])
+        self._draw_text("ESPACIO: Explorar", (20, WINDOW_HEIGHT - 100), COLORS["gray"])
+        self._draw_text("I: Inventario/Usar", (20, WINDOW_HEIGHT - 80), COLORS["gray"])
+        self._draw_text("M: Meditar", (20, WINDOW_HEIGHT - 60), COLORS["gray"])
+
+    def draw_combat_overlay(self, enemy, logs):
+        # Panel semi-transparente
+        s = pygame.Surface((WINDOW_WIDTH, 200))
         s.set_alpha(200)
-        s.fill((0,0,0))
-        self.screen.blit(s, (0, WINDOW_HEIGHT - 100))
+        s.fill((50, 0, 0))
+        self.screen.blit(s, (0, 0))
         
-        # Textos
-        self._draw_text(f"{player.name} [{player.title}]", (20, WINDOW_HEIGHT - 90), COLORS["gold"])
-        self._draw_text(f"Reino: {player.realm_name} (G{player.realm_idx})", (20, WINDOW_HEIGHT - 60), COLORS["text_light"])
+        self._draw_text(f"¡ENEMIGO: {enemy['name']}!", (400, 20), COLORS["danger_red"], font=self.font_title)
+        self._draw_text(f"HP: {enemy['stats']['hp']}/{enemy['stats']['max_hp']}", (400, 60), COLORS["text_light"])
         
-        # Barras
-        self._draw_bar(300, WINDOW_HEIGHT - 80, 200, 20, player.stats["hp"], player.stats["max_hp"], COLORS["danger_red"])
-        self._draw_text(f"HP", (260, WINDOW_HEIGHT - 80), COLORS["text_light"])
-        
-        self._draw_bar(300, WINDOW_HEIGHT - 50, 200, 20, player.stats["qi"], player.stats["max_qi"], COLORS["qi_blue"])
-        self._draw_text(f"Qi", (260, WINDOW_HEIGHT - 50), COLORS["text_light"])
-        
-        # Controles
-        controls = "WASD: Mover | ESPACIO: Explorar/Interactuar | I: Inventario | C: Cultivar"
-        self._draw_text(controls, (600, WINDOW_HEIGHT - 70), COLORS["gray"])
+        self._draw_text("[1] ATACAR   [2] TÉCNICA   [3] CAPTURAR   [4] HUIR", (350, 120), COLORS["gold"])
 
-    def _draw_combat_overlay(self, engine):
-        enemy = engine.current_enemy
+    def draw_menu_overlay(self, title, items, selection_index, quantities=None):
+        """Dibuja una lista seleccionable (Inventario/Crafting)"""
+        # Fondo
+        rect = pygame.Rect(350, 100, 600, 500)
+        pygame.draw.rect(self.screen, COLORS["panel"], rect)
+        pygame.draw.rect(self.screen, COLORS["gold"], rect, 2)
         
-        # Fondo Oscuro
-        overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
-        overlay.set_alpha(220)
-        overlay.fill((20, 0, 0))
-        self.screen.blit(overlay, (0,0))
+        self._draw_text(title, (370, 120), COLORS["gold"], font=self.font_title)
         
-        # Info Enemigo
-        cx, cy = WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2
-        self._draw_text(f"¡ENEMIGO: {enemy['name']}!", (cx - 150, cy - 100), COLORS["danger_red"], size=40)
-        self._draw_text(f"Rango: {enemy['rank']} | Elemento: {enemy['element']}", (cx - 100, cy - 50), COLORS["text_light"])
-        
-        # Barra Vida Enemigo
-        self._draw_bar(cx - 200, cy, 400, 30, enemy['stats']['hp'], enemy['stats']['max_hp'], COLORS["danger_red"])
-        
-        # Menú de Acción
-        actions = "[1] Atacar Físico  [2] Usar Técnica  [3] Capturar (Someter)  [4] Huir"
-        self._draw_text(actions, (cx - 250, cy + 100), COLORS["gold"])
-        
-        # Log de combate reciente
-        if engine.logs:
-            self._draw_text(f"> {engine.logs[-1]}", (cx - 250, cy + 150), COLORS["white"])
-
-    def _draw_inventory_overlay(self, player):
-        overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
-        overlay.set_alpha(230)
-        overlay.fill((10, 10, 20))
-        self.screen.blit(overlay, (0,0))
-        
-        self._draw_text("BOLSA ESPACIAL", (50, 50), COLORS["gold"], size=30)
-        
-        y = 100
-        for item, qty in player.inventory.items():
-            self._draw_text(f"- {item}: {qty}", (60, y), COLORS["text_light"])
-            y += 30
+        start_y = 160
+        for i, item in enumerate(items):
+            color = COLORS["white"]
+            prefix = "  "
+            if i == selection_index:
+                color = COLORS["warning_yellow"]
+                prefix = "> "
             
-        self._draw_text("[ESC] Cerrar", (50, WINDOW_HEIGHT - 50), COLORS["gray"])
+            qty_text = f" (x{quantities[item]})" if quantities else ""
+            self._draw_text(f"{prefix}{item}{qty_text}", (380, start_y + i*25), color)
 
-    def _draw_log_overlay(self, logs):
-        # Opcional: Mostrar historial completo
-        pass
+    def draw_logs(self, logs):
+        y = WINDOW_HEIGHT - 150
+        for log in logs:
+            self._draw_text(f"> {log}", (300, y), COLORS["text_light"])
+            y += 20
 
-    def _draw_text(self, text, pos, color, size=20):
-        font = self.font_main if size == 20 else pygame.font.SysFont("Arial", size, bold=True)
+    def _draw_text(self, text, pos, color, font=None):
+        if not font: font = self.font
         surf = font.render(str(text), True, color)
         self.screen.blit(surf, pos)
-
-    def _draw_bar(self, x, y, w, h, current, max_val, color):
-        pct = max(0, min(1, current / max(1, max_val)))
-        pygame.draw.rect(self.screen, (50, 50, 50), (x, y, w, h)) # Fondo
-        pygame.draw.rect(self.screen, color, (x, y, int(w * pct), h)) # Relleno
-        pygame.draw.rect(self.screen, (255, 255, 255), (x, y, w, h), 1) # Borde
         
-        # Texto numérico
-        text = f"{int(current)}/{int(max_val)}"
-        font = pygame.font.SysFont("Arial", 14)
-        surf = font.render(text, True, (255, 255, 255))
-        self.screen.blit(surf, (x + w//2 - surf.get_width()//2, y + 2))
+    def _get_color(self, tile):
+        # Mapeo rápido para ejemplo
+        if "Bosque" in tile: return (0, 100, 0)
+        if "Agua" in tile: return (0, 0, 200)
+        if "Montaña" in tile: return (100, 100, 100)
+        return (34, 139, 34) # Llanura
