@@ -222,7 +222,7 @@ class GameEngine:
         if self.player.stats["qi"] >= self.player.stats["max_qi"]:
             self.set_menu("MENU_BREAKTHROUGH")
             return
-        gain = 20
+        gain = random.randint(7,25)
         self.player.stats["qi"] = min(self.player.stats["max_qi"], self.player.stats["qi"] + gain)
         self.log(f"Meditas... +{gain} Qi")
         

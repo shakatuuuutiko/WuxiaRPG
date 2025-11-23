@@ -8,8 +8,8 @@ RANKS = {
     "Gran Anciano":       {"salary": 500,  "authority": 80,  "limit": 3},
     "Anciano":            {"salary": 200,  "authority": 60,  "limit": 10},
     "Discípulo Legado":   {"salary": 100,  "authority": 40,  "limit": 10},
-    "Discípulo Interior": {"salary": 50,   "authority": 20,  "limit": 50},
-    "Discípulo Exterior": {"salary": 10,   "authority": 10,  "limit": 1000}
+    "Discípulo Interior": {"salary": 50,   "authority": 20,  "limit": 500},
+    "Discípulo Exterior": {"salary": 10,   "authority": 10,  "limit": 10000}
 }
 
 class Sect:

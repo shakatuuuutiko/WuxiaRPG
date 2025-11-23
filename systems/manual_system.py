@@ -1,8 +1,8 @@
 import random
 
 KEYWORDS = {
-    "NOUNS": ["Palma", "Puño", "Dedo", "Espada", "Sable", "Rugido", "Corte", "Aguja", "Paso"],
-    "ADJECTIVES": ["Divino", "Infernal", "Vasto", "Eterno", "Rápido", "Pesado", "Oculto"],
+    "NOUNS": ["Palma", "Puño", "Dedo", "Espada", "Lanza", "Sable", "Rugido", "Corte", "Aguja", "Paso"],
+    "ADJECTIVES": ["Divino", "Infernal", "Vasto", "Eterno", "Rápido", "Pesado", "Oculto", "Corrupto"],
     "ELEMENTS": {
         "Fuego": ["del Sol", "Abrasador"], "Agua": ["del Océano", "de Escarcha"],
         "Tierra": ["de la Montaña", "Sismico"], "Viento": ["de la Tormenta", "Invisible"],

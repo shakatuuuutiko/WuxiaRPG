@@ -92,6 +92,12 @@ class PygameMapRenderer:
         return (50,150,50)
 
     def _get_icon(self, t):
-        if "Bosque" in t: return "♣"
-        if "Montaña" in t: return "▲"
+        if "Bosque" in t: return "🌳"
+        if "Montaña" in t: return "🏔️"
+        if "Océano" in t: return "🌊"
+        if "Agua" in t: return "💦"
+        if "Playa" in t: return "🌴"
+        if "Llanura" in t: return "🌿"
+        if "volcán" in t: return "⛰️", "🔥"
+        if "Desierto" in t: return "🌴"
         return ""

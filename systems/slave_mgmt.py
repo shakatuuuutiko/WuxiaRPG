@@ -4,11 +4,11 @@ import random
 
 CONTRACTS = {
     "Siervo": {
-        "cost": 50, "loyalty": 10, "fear": 50, "efficiency": 1.0,
+        "cost": 50, "loyalty": 10, "fear": 50, "efficiency": 1.2,
         "desc": "Mantiene conciencia. Riesgo de rebelión."
     },
     "Marioneta": {
-        "cost": 200, "loyalty": 100, "fear": 0, "efficiency": 0.6,
+        "cost": 200, "loyalty": 100, "fear": 0, "efficiency": 0.7,
         "desc": "Sin mente. Lealtad absoluta pero torpe."
     }
 }

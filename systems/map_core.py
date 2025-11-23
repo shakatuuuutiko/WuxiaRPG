@@ -12,12 +12,31 @@ class MapManager:
         if not os.path.exists(self.save_path): os.makedirs(self.save_path)
             
         # REGISTRO DE LUGARES (Coordenadas Globales)
-        self.poi_registry = {
-            "Pueblo Inicio": [0, 0],
-            "Secta Nube": [200, 200],
-            "Secta Sangre": [-300, 450],
-            "Ruinas": [500, -100]
-        }
+       # self.poi_registry = {
+            #"Pueblo Scarsha": [random.randint(-1000, 1000), random.randint(-1000, 1000)],
+           # "Secta Nube Blanca": [random.randint(-1000, 1000), random.randint(-1000, 1000)],
+          #  "Secta Sangre del Maldito": [random.randint(-1000, 1000), random.randint(-1000, 1000)],
+         #   "Ruinas": [random.randint(-1000, 1000), random.randint(-1000, 1000)]
+        #}
+
+        # Carga la lista de zonas en formato JSON
+        with open('Lugares.json') as f:
+            datos = json.load(f)
+
+        # Diccionario que almacena las zonas y sus coordenadas
+        self.poi_registry = {}
+
+        # Función para generar coordenadas aleatorias
+        def generar_coordenadas():
+            return [random.randint(-1000, 1000), random.randint(-1000, 1000)]
+
+        # Función para agregar una zona al registro
+        def agregar_Lugar(Lugar):
+            self.poi_registry[Lugar['Lugar']] = generar_coordenadas()
+
+        # Carga la lista de zonas y las agrega aleatoriamente al registro
+        for Lugar in datos:
+            agregar_Lugar(Lugar)
 
     def get_tile_info(self, gx, gy):
         cx, cy = gx // CHUNK_SIZE, gy // CHUNK_SIZE
@@ -34,6 +53,7 @@ class MapManager:
         elif val < 0.3: return "Llanura"
         elif val < 0.8: return "Bosque"
         elif val < 1.3: return "Montaña"
+        elif val < 0.1: return "Desierto"
         return "Volcán"
 
     def _load_chunk(self, cx, cy):
