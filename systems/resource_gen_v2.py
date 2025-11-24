@@ -1,21 +1,24 @@
+import json
 import random
 
 # Base de datos de recursos por categoría y rareza
 RESOURCES_DB = {
-    "Madera": {
-        "Común": ["Roble", "Pino", "Rama"],
-        "Raro": ["Madera de Hierro", "Bambú Espiritual"],
-        "Épico": ["Madera de Fénix", "Raíz del Árbol Mundo"]
+    "Maderas": {
+        "Común": ["Roble", "Pino", "Rama", "Tronco","Bambú"],
+        "Raro": ["Madera de Hierro", "Bambú Espiritual", "Tronco Espiritual","Roble Milenario"],
+        "Épico": ["Madera de Fénix", "Raíz del Árbol del Mundo",
+        "Tronco del árbol del Mundo","Raices Universales","Bambu del Cosmos","Roble de los cien mil años"]
     },
-    "Mineral": {
-        "Común": ["Roca", "Cobre", "Hierro"],
-        "Raro": ["Plata", "Oro", "Jade", "Hierro Negro"],
-        "Épico": ["Adamantita", "Mithril", "Plata Estelar"]
+    "Minerales": {
+        "Común": ["Roca", "Cobre", "Hierro","Granito","Diorita","Estaño","Jade"],
+        "Raro": ["Plata", "Oro", "Jade Blanco", "Hierro Negro","Titanio","Cristal"],
+        "Épico": ["Adamantita", "Mithril", "Plata Estelar","Oro Galactico",
+        "Roca Espacial","Hierro del Vacio","Cobre Forjado a presion","Jade Negro"]
     },
-    "Planta": {
-        "Común": ["Hierba Medicinal", "Flor Silvestre", "Hongo Marrón"],
-        "Raro": ["Ginseng de 100 años", "Loto de Nieve", "Hongo Espiritual"],
-        "Épico": ["Ginseng de Sangre", "Fruto de la Inmortalidad"]
+    "Plantas": {
+        "Común": ["Hierba Medicinal", "Flor Silvestre", "Hongo Marrón","Ginseng de 10 años","Hierba venenosa"],
+        "Raro": ["Ginseng de 100 años", "Loto de Nieve", "Hongo Espiritual","Loto Fogoso","Hongo Venenoso de 7 colores"],
+        "Épico": ["Ginseng de Sangre", "Fruto de la Inmortalidad","loto de 7 colores","Hongo de las pesadillas","Hongo Post-Mortem"]
     }
 }
 
@@ -27,7 +30,7 @@ SUFFIX_TIERS = {
 }
 
 class ProceduralResourceGen:
-    def generate(self, target_rank=1, force_type=None):
+    def generate(self, target_rank=random.randrange(1, 50), force_type=None):
         """
         Genera un recurso y retorna un diccionario {name, rank, origin_world, potency}.
         """
@@ -38,7 +41,7 @@ class ProceduralResourceGen:
         else:
             mat_type = random.choice(list(RESOURCES_DB.keys()))
             
-        root_name = random.choice(RESOURCES_DB[mat_type]["Común"]) # Solo usamos comunes como base
+        root_name = random.choice(RESOURCES_DB[mat_type][random.choice("Común","Raro","Épico")]) # Solo usamos comunes como base
         
         # 2. Determinar Tier
         tier_data = self._get_tier_data(target_rank)
@@ -65,3 +68,42 @@ class ProceduralResourceGen:
             if min_r <= rank <= max_r:
                 return data
         return SUFFIX_TIERS["Divino"]
+
+            
+def group_by_category_and_potency(self, resources):
+        grouped = {'Maderas': [], 'Minerales': [], 'Plantas': []}
+        for resource in resources:
+            category = next(key for key, value in RESOURCES_DB.items() if resource in value['Común'] + value['Raro'] + value['Épico'])
+            potency = random.randint(*SUFFIX_TIERS[next(tier for tier, data in SUFFIX_TIERS.items() if resource.startswith(data["range"][0]))[1]["range"]]  )
+            
+            # Agregar atributos específicos para materiales de forja
+            if category == 'Minerales':
+                data = {
+                    "name": resource,
+                    "potency": potency,
+                    "stats_forja": {"dureza": random.randint(15, 90), "conductividad": random.randint(10, 70), "peso": random.randint(8, 20)}
+                }
+            elif category == 'Maderas':
+                data = {
+                    "name": resource,
+                    "potency": potency,
+                    "stats_forja": {"dureza": random.randint(5, 60), "conductividad": random.randint(20, 110), "peso": random.randint(5, 10)}
+                }
+            elif category == 'Plantas':
+                data = {
+                    "name": resource, 
+                    "potency": potency,
+                    "tags": {random.choice("Fuego","Vida","Madera","Hielo","Espacio","Agua","Pureza,Yang","Yin","Sangre","Destrucción","Estabilidad")}-{ random.randint(1, 85)}-{random.choice("Fuego","Vida","Madera","Hielo","Espacio","Agua","Pureza,Yang","Yin","Sangre","Destrucción","Estabilidad")}-{ random.randint(1, 85)}-{random.choice("Fuego","Vida","Madera","Hielo","Espacio","Agua","Pureza,Yang","Yin","Sangre","Destrucción","Estabilidad")}-{random.randint(1, 85)}
+                }
+            grouped[category].append(data)
+        return grouped
+
+def save_to_json(self, materials):
+        """Guarda los materiales en un archivo JSON."""
+        with open('Materials', 'w') as f:
+            json.dump(materials, f, indent=4)
+def generate(self, target_rank=random.randrange(1, 50), ):
+    resources = self._generate_resources(target_rank)
+    materials = group_by_category_and_potency(resources)
+    save_to_json 
+    return materials

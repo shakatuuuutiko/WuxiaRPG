@@ -98,6 +98,6 @@ class PygameMapRenderer:
         if "Agua" in t: return "💦"
         if "Playa" in t: return "🌴"
         if "Llanura" in t: return "🌿"
-        if "volcán" in t: return "⛰️", "🔥"
+        if "volcán" in t: return "⛰️"+"🔥"
         if "Desierto" in t: return "🌴"
         return ""

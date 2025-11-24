@@ -1,13 +1,18 @@
 import random
-from data.items_db import ITEMS_DB
+import json
+from data import Materials
+
 # Nota: La clase Soul y ArtifactSpirit deberían estar en systems/artifact_spirit.py
 # Aquí asumimos que la clase existe y se importa correctamente.
 
 # --- CONFIGURACIÓN DE MOULDES Y ESTRUCTURAS ---
 WEAPON_MOLDS = {
     "Daga":   {"densidad": 1.5, "speed": 1.8},
-    "Espada": {"densidad": 1.0, "speed": 1.0},
-    "Lanza":  {"densidad": 0.9, "speed": 1.2}
+    "Espada": {"densidad": 1.1, "speed": 1.0},
+    "Lanza":  {"densidad": 0.9, "speed": 1.2},
+    "Sable":  {"densidad": 1.0, "speed": 1.3},
+    "Hacha":  {"densidad": 1.6, "speed": 0.9},
+    "Pico":  {"densidad": 1.8, "speed": 0.9}
 }
 
 BUILDINGS = {
@@ -25,7 +30,7 @@ class AlchemySystem:
         total_impurity = 0
         
         for item in ingredients:
-            data = ITEMS_DB.get(item, {}).get("tags", {})
+            data = Materials.get("Plantas", {}).get("tags", {})
             for k, v in data.items():
                 total_tags[k] = total_tags.get(k, 0) + v
                 
@@ -44,15 +49,27 @@ class AlchemySystem:
             return "Escoria Tóxica", False
             
         return "Polvo Medicinal Genérico", True
-
+    def get_random_material(self, category):
+        """Obtenga un material aleatorio de la categoría especificada."""
+        materials = Materials.get(category, ["Plantas"])
+        return random.choice(materials) if materials else None
 # --- SISTEMA DE FORJA (Densidad) ---
 class ForgeSystem:
+    def get_random_material(self, category):
+        """Obtenga un material aleatorio de la categoría especificada."""
+        Materials = Materials.get(category, ["Minerales"])
+        return random.choice(Materials) if Materials else None
+    def get_random_material(self, category):
+        """Obtenga un material aleatorio de la categoría especificada."""
+        Materials = Materials.get(category, ["Maderas"])
+        return random.choice(Materials) if Materials else None
     def forge_weapon(self, metal_name, core_name, mold_type):
-        metal = ITEMS_DB.get(metal_name, {})
+        Minerales = Materials.get(Materials, {})
+        Maderas = Materials.get(Materials, {})
         mold = WEAPON_MOLDS.get(mold_type, WEAPON_MOLDS["Espada"])
         
         # Stats base por densidad
-        base_atk = metal.get("stats_forja", {}).get("dureza", 10) * mold["densidad"]
+        base_atk = Minerales.get("stats_forja", {}).get("dureza", 10) * mold["densidad"], Maderas.get("stats_forja", {}).get("dureza", 10) * mold["densidad"]
         
         # Bonus por Núcleo (Simulado)
         elem_dmg = 0

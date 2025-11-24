@@ -211,7 +211,7 @@ class GameEngine:
     def act_explore(self):
         if random.random() < 0.4: self.trigger_encounter()
         else:
-            r = self.res_gen.generate(self.player.realm_idx + 1)
+            r = self.res_gen.generate(self.player.realm_idx + random.randint(-4, 4))
             name = r["name"]
             self.player.inventory[name] = self.player.inventory.get(name, 0) + 1
             self.log(f"Hallado: {name}")
@@ -241,7 +241,7 @@ class GameEngine:
 
     def trigger_encounter(self):
         self.state = "COMBAT"
-        self.current_enemy = self.beast_gen.generate(self.player.realm_idx + 1)
+        self.current_enemy = self.beast_gen.generate(self.player.realm_idx + random.randint(-3,3))
         self.log(f"¡ENEMIGO! {self.current_enemy['name']}")
 
     def combat_attack(self):

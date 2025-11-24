@@ -41,7 +41,7 @@ class Player:
         # 2. Stats
         self.stats = {
             "hp": 150, "max_hp": 150,
-            "qi": 0, "max_qi": 100,
+            "qi": 50, "max_qi": 100,
             "stamina": 100, "max_stamina": 100,
             "atk": 20, "def": 10,
             "comprension": 10, "suerte": 0,
