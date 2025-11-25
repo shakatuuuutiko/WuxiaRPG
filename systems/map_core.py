@@ -12,45 +12,12 @@ class MapManager:
         if not os.path.exists(self.save_path): os.makedirs(self.save_path)
             
         # REGISTRO DE LUGARES (Coordenadas Globales)
-       # self.poi_registry = {
-            #"Pueblo Scarsha": [random.randint(-1000, 1000), random.randint(-1000, 1000)],
-           # "Secta Nube Blanca": [random.randint(-1000, 1000), random.randint(-1000, 1000)],
-          #  "Secta Sangre del Maldito": [random.randint(-1000, 1000), random.randint(-1000, 1000)],
-         #   "Ruinas": [random.randint(-1000, 1000), random.randint(-1000, 1000)]
-        #}
-
-        # Carga la lista de zonas en formato JSON
-        lugares_path = os.path.join(os.path.dirname(__file__), 'Lugares.json')
-        try:
-            with open(lugares_path, 'r', encoding='utf-8') as f:
-                datos = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
-            # Si no existe o está vacío, usar datos por defecto
-            datos = [
-                {"Lugar": "Pueblo Scarsha"},
-                {"Lugar": "Secta Nube Blanca"},
-                {"Lugar": "Secta Sangre del Maldito"},
-                {"Lugar": "Ruinas Antiguas"},
-                {"Lugar": "Montaña Celestial"},
-                {"Lugar": "Bosque Prohibido"},
-                {"Lugar": "Río del Olvido"},
-                {"Lugar": "Templo Abandonado"}
-            ]
-
-        # Diccionario que almacena las zonas y sus coordenadas
-        self.poi_registry = {}
-
-        # Función para generar coordenadas aleatorias
-        def generar_coordenadas():
-            return [random.randint(-1000, 1000), random.randint(-1000, 1000)]
-
-        # Función para agregar una zona al registro
-        def agregar_Lugar(Lugar):
-            self.poi_registry[Lugar['Lugar']] = generar_coordenadas()
-
-        # Carga la lista de zonas y las agrega aleatoriamente al registro
-        for Lugar in datos:
-            agregar_Lugar(Lugar)
+        self.poi_registry = {
+            "Pueblo Inicio": [0, 0],
+            "Secta Nube": [200, 200],
+            "Secta Sangre": [-300, 450],
+            "Ruinas": [500, -100]
+        }
 
     def get_tile_info(self, gx, gy):
         cx, cy = gx // CHUNK_SIZE, gy // CHUNK_SIZE
