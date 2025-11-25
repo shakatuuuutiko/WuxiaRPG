@@ -1,10 +1,10 @@
 # --- CONFIGURACIÓN GLOBAL ---
-WINDOW_WIDTH = 1280
-WINDOW_HEIGHT = 720
+WINDOW_WIDTH = 1366
+WINDOW_HEIGHT = 768
 APP_TITLE = "WUXIA: ETERNIDAD INFINITA"
 FPS = 60
 
-TILE_SIZE = 24
+TILE_SIZE = 48
 CHUNK_SIZE = 32
 VOID_TILE = "ABISMO ESPACIAL"
 
@@ -31,5 +31,6 @@ COLORS = {
     "Llanura": (34, 139, 34), "Bosque": (0, 80, 0), "Montaña": (105, 105, 105),
     "Volcán": (139, 0, 0), "Océano": (0, 0, 139), "Agua": (30, 144, 255),
     "Playa": (238, 214, 175), "Tundra": (200, 240, 255), "Roca": (80, 80, 80),
-    "Arrecife": (0, 200, 200), "ABISMO ESPACIAL": (0, 0, 0), "Vacío": (20, 0, 20)
+    "Arrecife": (0, 200, 200), "ABISMO ESPACIAL": (0, 0, 0), "Vacío": (20, 0, 20),
+    "Desierto": (244, 218, 175)
 }

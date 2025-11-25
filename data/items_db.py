@@ -64,11 +64,17 @@ ITEMS_DB = {
         "afinidad": "Oscuridad",
         "desc": "Huesos malditos usados para armas viles."
     },
+        "Hierro de Qi": {
+        "tipo": "Metal",
+        "stats_forja": {"dureza": 30, "conductividad": 40, "peso": 9},
+        "afinidad": "Neutro",
+        "desc": "Metal estándar para cultivadores."
+    },
 
     # === CONSUMIBLES COMUNES ===
     "Píldora Curativa": {"tipo": "Consumible", "efecto": {"hp": 100}, "desc": "Restaura heridas leves."},
     "Píldora de Qi": {"tipo": "Consumible", "efecto": {"qi": 50}, "desc": "Recupera energía espiritual."},
     "Píldora de Fundación": {"tipo": "Consumible", "efecto": {"breakthrough_chance": 0.4}, "desc": "Aumenta la chance de llegar al Reino Fundación."},
-    "Píldora de Longevidad": {"tipo": "Consumible", "efecto": {"lifespan": 10}, "desc": "Extiende la vida 10 años."},
+    "Píldora de Longevidad": {"tipo": "Consumible", "efecto": {"lifespan": 25}, "desc": "Extiende la vida 25 años."},
     "Píldora de Lavado de Médula": {"tipo": "Consumible", "efecto": {"root_cleanse": True}, "desc": "Purifica Raíces Espirituales."}
 }

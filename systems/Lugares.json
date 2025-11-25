@@ -1,0 +1,229 @@
+[
+  {
+    "Lugar": "Caserío Próspero en la Orilla",
+    "tipo": "pueblo",
+    "nivel": 1,
+    "NPCs": [
+      "Posadero",
+      "Comerciante"
+    ],
+    "descripcion": "Un pueblo construido en Madera donde habitan Humanos. El clima Árido define su carácter.",
+    "coordenadas": [
+      -392,
+      887
+    ]
+  },
+  {
+    "Lugar": "Aldea Rocoso en el Valle",
+    "tipo": "pueblo",
+    "nivel": 1,
+    "NPCs": [
+      "Maestro de Artes Marciales",
+      "Curandera",
+      "Herrero",
+      "Vendedor Local"
+    ],
+    "descripcion": "Tranquilo asentamiento Bestias Espirituales bajo clima Sagrado. Las casas de Cristal conforman su estructura.",
+    "coordenadas": [
+      -1761,
+      -1464
+    ]
+  },
+  {
+    "Lugar": "Caserío Tranquilo en la Colina",
+    "tipo": "pueblo",
+    "nivel": 2,
+    "NPCs": [
+      "Comerciante",
+      "Vendedor Local"
+    ],
+    "descripcion": "Pueblo ancestral de Humanos con arquitectura de Metal Espiritual. Influenciado por clima Tropical.",
+    "coordenadas": [
+      -1651,
+      -124
+    ]
+  },
+  {
+    "Lugar": "Aldea Montañoso en el Valle",
+    "tipo": "pueblo",
+    "nivel": 1,
+    "NPCs": [
+      "Herrero",
+      "Curandera",
+      "Granjero"
+    ],
+    "descripcion": "Pueblo ancestral de Bestias Espirituales con arquitectura de Metal Espiritual. Influenciado por clima Árido.",
+    "coordenadas": [
+      -1072,
+      581
+    ]
+  },
+  {
+    "Lugar": "Urbe Flotante en el Bosque",
+    "tipo": "ciudad",
+    "nivel": 10,
+    "NPCs": [
+      "Consejero",
+      "Gobernador",
+      "Guardián de la Ciudad",
+      "Bibliotecario",
+      "Diplomático",
+      "Investigador Secreto"
+    ],
+    "descripcion": "Gran ciudad construida por Bestias Espirituales usando Cristal. Bajo clima Tóxico, prospera como centro de poder.",
+    "coordenadas": [
+      -736,
+      -1131
+    ]
+  },
+  {
+    "Lugar": "Metrópoli Maldita en el Bosque",
+    "tipo": "ciudad",
+    "nivel": 13,
+    "NPCs": [
+      "Bibliotecario",
+      "Guardián de la Ciudad",
+      "Diplomático",
+      "Alquimista"
+    ],
+    "descripcion": "Metrópolis de Inmortales con imponentes estructuras de Metal Espiritual. El clima Tropical la rodea con misterio.",
+    "coordenadas": [
+      -1284,
+      -1140
+    ]
+  },
+  {
+    "Lugar": "Orden Abismo de los Reinos Oscuros",
+    "tipo": "secta",
+    "nivel": 22,
+    "NPCs": [
+      "Discípulo Destacado",
+      "Matriarca",
+      "Guardián de los Secretos"
+    ],
+    "descripcion": "Secta rodeada de misterio que busca poder. Sus miembros dominan Magia Prohibida.",
+    "coordenadas": [
+      -1395,
+      749
+    ]
+  },
+  {
+    "Lugar": "Congregación Tigre del Vacío",
+    "tipo": "secta",
+    "nivel": 22,
+    "NPCs": [
+      "Guardián de Entrada",
+      "Elder Menor",
+      "Elder Senior",
+      "Matriarca"
+    ],
+    "descripcion": "Secta rodeada de misterio que busca poder. Sus miembros dominan Magia Prohibida.",
+    "coordenadas": [
+      615,
+      -1312
+    ]
+  },
+  {
+    "Lugar": "Orden Vacío de la Cumbre",
+    "tipo": "secta",
+    "nivel": 20,
+    "NPCs": [
+      "Discípulo Destacado",
+      "Patriarca",
+      "Custodio de Reliquias",
+      "Instructor de Cultivo"
+    ],
+    "descripcion": "Congregación de cultivadores obsesionados con vacío. Utilizan Cultivo Demoníaco para ascender.",
+    "coordenadas": [
+      1870,
+      -1130
+    ]
+  },
+  {
+    "Lugar": "Santuario Dorado Bajo Tierra",
+    "tipo": "templo",
+    "nivel": 33,
+    "NPCs": [
+      "Monje Meditador",
+      "Guardián Sagrado",
+      "Aprendiz Sagrado"
+    ],
+    "descripcion": "Templo sagrado dedicado a antiguos dioses. Se dice que otorga revelación a los dignos.",
+    "coordenadas": [
+      -1147,
+      155
+    ]
+  },
+  {
+    "Lugar": "Monasterio Cristalino en el Templo Perdido",
+    "tipo": "templo",
+    "nivel": 24,
+    "NPCs": [
+      "Portador de la Llave",
+      "Sumo Sacerdote",
+      "Monje Meditador"
+    ],
+    "descripcion": "Templo milenario consagrado a fuerzas celestiales. Fuente de revelación y sabiduría perdida.",
+    "coordenadas": [
+      977,
+      687
+    ]
+  },
+  {
+    "Lugar": "Cavernas de Celestial en el Tiempo Perdido",
+    "tipo": "dungeon",
+    "nivel": 32,
+    "NPCs": [
+      "Guardián Automático",
+      "Bestia Ancestral"
+    ],
+    "descripcion": "Ruinas que contienen secretos del pasado. Pero cuidado: maldiciones antiguas acecha en las sombras.",
+    "coordenadas": [
+      614,
+      -1412
+    ]
+  },
+  {
+    "Lugar": "Torre de Olvidado bajo el Mundo",
+    "tipo": "dungeon",
+    "nivel": 42,
+    "NPCs": [
+      "Esqueleto Maldito",
+      "Espíritu Guardián",
+      "Bestia Ancestral"
+    ],
+    "descripcion": "Lugar de leyenda donde yace secretos del pasado. Sin embargo, maldiciones antiguas lo resguarda celosamente.",
+    "coordenadas": [
+      -1561,
+      -1588
+    ]
+  },
+  {
+    "Lugar": "Mazmorra de Perdido en la Brecha",
+    "tipo": "dungeon",
+    "nivel": 39,
+    "NPCs": [
+      "Esqueleto Maldito"
+    ],
+    "descripcion": "Mazmorra llena de tesoros olvidados. Protegida por trampas mortales. Solo los más valientes se aventuran aquí.",
+    "coordenadas": [
+      -1773,
+      1376
+    ]
+  },
+  {
+    "Lugar": "Castillo Perdida en la Isla",
+    "tipo": "castillo",
+    "nivel": 27,
+    "NPCs": [
+      "Señor del Castillo",
+      "Capitán de la Guardia",
+      "Tesorero"
+    ],
+    "descripcion": "Fortaleza protegida por antiguos guardianes. Centro de poder y autoridad.",
+    "coordenadas": [
+      -1264,
+      150
+    ]
+  }
+]

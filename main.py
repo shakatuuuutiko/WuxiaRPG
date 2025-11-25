@@ -19,6 +19,8 @@ try:
     from systems.time_system import TimeSystem, AgeManager
     from systems.origin_generator import OriginGenerator
     from systems.map_core import MapManager
+    from systems.equipment import CharacterEquipment, Equipment, create_starter_weapon
+    from systems.crafting import ForgeSystem
     from ui.game_engine import GameEngine
     from ui.main_menu import MainMenu
 except ImportError as e:
@@ -41,7 +43,7 @@ class Player:
         # 2. Stats
         self.stats = {
             "hp": 150, "max_hp": 150,
-            "qi": 0, "max_qi": 100,
+            "qi": 50, "max_qi": 100,
             "stamina": 100, "max_stamina": 100,
             "atk": 20, "def": 10,
             "comprension": 10, "suerte": 0,
@@ -92,6 +94,12 @@ class Player:
             "Palma de Qi": {"cost": 10, "mult": 1.5, "elem": "Neutro"}
         }
         
+        # 5. SISTEMA DE EQUIPAMIENTO
+        self.equipment = CharacterEquipment()
+        # Equipa un arma inicial
+        starter_weapon = create_starter_weapon(self.name)
+        self.equipment.equip_weapon(starter_weapon)
+        
         start_range = 1000
         self.location = [random.randint(-start_range, start_range), random.randint(-start_range, start_range)]
 
@@ -105,6 +113,16 @@ class Player:
     def age(self): return self.age_sys.current_age
     @property
     def max_lifespan(self): return self.age_sys.max_lifespan
+    
+    def get_total_atk(self):
+        """Retorna el ataque total: stats base + arma equipada."""
+        base_atk = self.stats.get("atk", 10)
+        weapon_bonus = self.equipment.get_equipped_damage()
+        return base_atk + weapon_bonus
+    
+    def get_attack_speed(self):
+        """Retorna la velocidad de ataque del arma equipada."""
+        return self.equipment.get_equipped_speed()
 
 
 # =====================================================

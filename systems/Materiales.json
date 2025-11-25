@@ -1,0 +1,411 @@
+{
+  "Maderas": [
+    {
+      "name": "Roble",
+      "rarity": "Común",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 12,
+        "conductividad": 35,
+        "peso": 3.75
+      }
+    },
+    {
+      "name": "Pino",
+      "rarity": "Común",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 10,
+        "conductividad": 43,
+        "peso": 3.21
+      }
+    },
+    {
+      "name": "Rama",
+      "rarity": "Común",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 16,
+        "conductividad": 47,
+        "peso": 7.88
+      }
+    },
+    {
+      "name": "Tronco",
+      "rarity": "Común",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 18,
+        "conductividad": 35,
+        "peso": 6.73
+      }
+    },
+    {
+      "name": "Bambú",
+      "rarity": "Común",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 9,
+        "conductividad": 34,
+        "peso": 1.73
+      }
+    },
+    {
+      "name": "Madera de Hierro",
+      "rarity": "Raro",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 47,
+        "conductividad": 67,
+        "peso": 6.35
+      }
+    },
+    {
+      "name": "Bambú Espiritual",
+      "rarity": "Raro",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 29,
+        "conductividad": 73,
+        "peso": 8.45
+      }
+    },
+    {
+      "name": "Tronco Espiritual",
+      "rarity": "Raro",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 33,
+        "conductividad": 47,
+        "peso": 3.78
+      }
+    },
+    {
+      "name": "Roble Milenario",
+      "rarity": "Raro",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 36,
+        "conductividad": 49,
+        "peso": 6.65
+      }
+    },
+    {
+      "name": "Madera de Fénix",
+      "rarity": "Épico",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 56,
+        "conductividad": 53,
+        "peso": 6.2
+      }
+    },
+    {
+      "name": "Raíz del Árbol del Mundo",
+      "rarity": "Épico",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 51,
+        "conductividad": 34,
+        "peso": 4.76
+      }
+    },
+    {
+      "name": "Tronco del Árbol del Mundo",
+      "rarity": "Épico",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 59,
+        "conductividad": 22,
+        "peso": 6.89
+      }
+    },
+    {
+      "name": "Raíz Universal",
+      "rarity": "Épico",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 42,
+        "conductividad": 42,
+        "peso": 7.57
+      }
+    },
+    {
+      "name": "Roble Eterno",
+      "rarity": "Legendario",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 73,
+        "conductividad": 66,
+        "peso": 8.08
+      }
+    },
+    {
+      "name": "Raíz del Eterno Mundo",
+      "rarity": "Legendario",
+      "type": "Maderas",
+      "stats_forja": {
+        "dureza": 81,
+        "conductividad": 43,
+        "peso": 16.42
+      }
+    }
+  ],
+  "Minerales": [
+    {
+      "name": "Roca",
+      "rarity": "Común",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 19,
+        "conductividad": 40,
+        "peso": 7.14
+      }
+    },
+    {
+      "name": "Cobre",
+      "rarity": "Común",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 17,
+        "conductividad": 15,
+        "peso": 17.39
+      }
+    },
+    {
+      "name": "Hierro",
+      "rarity": "Común",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 27,
+        "conductividad": 8,
+        "peso": 26.12
+      }
+    },
+    {
+      "name": "Granito",
+      "rarity": "Común",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 17,
+        "conductividad": 13,
+        "peso": 25.82
+      }
+    },
+    {
+      "name": "Estaño",
+      "rarity": "Común",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 30,
+        "conductividad": 31,
+        "peso": 16.61
+      }
+    },
+    {
+      "name": "Plata",
+      "rarity": "Raro",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 46,
+        "conductividad": 13,
+        "peso": 34.68
+      }
+    },
+    {
+      "name": "Oro",
+      "rarity": "Raro",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 57,
+        "conductividad": 54,
+        "peso": 17.56
+      }
+    },
+    {
+      "name": "Cristal",
+      "rarity": "Raro",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 41,
+        "conductividad": 24,
+        "peso": 27.58
+      }
+    },
+    {
+      "name": "Titanio",
+      "rarity": "Raro",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 53,
+        "conductividad": 21,
+        "peso": 28.02
+      }
+    },
+    {
+      "name": "Adamantita",
+      "rarity": "Épico",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 70,
+        "conductividad": 50,
+        "peso": 29.88
+      }
+    },
+    {
+      "name": "Mithril",
+      "rarity": "Épico",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 79,
+        "conductividad": 55,
+        "peso": 43.24
+      }
+    },
+    {
+      "name": "Oro Galáctico",
+      "rarity": "Épico",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 74,
+        "conductividad": 47,
+        "peso": 42.36
+      }
+    },
+    {
+      "name": "Adamantita Estelar",
+      "rarity": "Legendario",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 101,
+        "conductividad": 108,
+        "peso": 38.01
+      }
+    },
+    {
+      "name": "Mithril del Vacío",
+      "rarity": "Legendario",
+      "type": "Minerales",
+      "stats_forja": {
+        "dureza": 80,
+        "conductividad": 102,
+        "peso": 18.11
+      }
+    }
+  ],
+  "Plantas": [
+    {
+      "name": "Hierba Medicinal",
+      "rarity": "Común",
+      "type": "Plantas",
+      "tags": {
+        "Agua": 12,
+        "Fuego": 5
+      },
+      "potency": 17
+    },
+    {
+      "name": "Flor Silvestre",
+      "rarity": "Común",
+      "type": "Plantas",
+      "tags": {
+        "Hielo": 5,
+        "Sangre": 7
+      },
+      "potency": 12
+    },
+    {
+      "name": "Hongo Marrón",
+      "rarity": "Común",
+      "type": "Plantas",
+      "tags": {
+        "Estabilidad": 12,
+        "Agua": 8
+      },
+      "potency": 20
+    },
+    {
+      "name": "Ginseng de 100 años",
+      "rarity": "Raro",
+      "type": "Plantas",
+      "tags": {
+        "Fuego": 15,
+        "Hielo": 10,
+        "Estabilidad": 10
+      },
+      "potency": 35
+    },
+    {
+      "name": "Loto de Nieve",
+      "rarity": "Raro",
+      "type": "Plantas",
+      "tags": {
+        "Estabilidad": 13,
+        "Pureza": 22,
+        "Vida": 16
+      },
+      "potency": 51
+    },
+    {
+      "name": "Hongo Espiritual",
+      "rarity": "Raro",
+      "type": "Plantas",
+      "tags": {
+        "Sangre": 14,
+        "Vida": 25,
+        "Fuego": 13
+      },
+      "potency": 52
+    },
+    {
+      "name": "Ginseng de Sangre",
+      "rarity": "Épico",
+      "type": "Plantas",
+      "tags": {
+        "Estabilidad": 26,
+        "Yin": 44,
+        "Sangre": 36,
+        "Agua": 39
+      },
+      "potency": 145
+    },
+    {
+      "name": "Fruto de la Inmortalidad",
+      "rarity": "Épico",
+      "type": "Plantas",
+      "tags": {
+        "Vida": 28,
+        "Estabilidad": 29,
+        "Hielo": 28,
+        "Yin": 28
+      },
+      "potency": 113
+    },
+    {
+      "name": "Hierba de la Eternidad",
+      "rarity": "Legendario",
+      "type": "Plantas",
+      "tags": {
+        "Estabilidad": 52,
+        "Yin": 41,
+        "Madera": 88,
+        "Sangre": 65,
+        "Yang": 57
+      },
+      "potency": 303
+    },
+    {
+      "name": "Loto de la Inmortalidad",
+      "rarity": "Legendario",
+      "type": "Plantas",
+      "tags": {
+        "Hielo": 69,
+        "Sangre": 56,
+        "Yin": 59,
+        "Vida": 51,
+        "Pureza": 55
+      },
+      "potency": 290
+    }
+  ]
+}
